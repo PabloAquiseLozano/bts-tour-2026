@@ -1,5 +1,4 @@
-import { Header, Footer } from '@/components/layout';
-import { Hero, TicketsSection, MerchSection, BtsHistory, SpotifySection } from '@/components/sections';
+import {BtsHistory, Footer, Header, Hero, MerchSection, SpotifySection, TicketsSection} from "@/components";
 
 export default function Home() {
   return (
