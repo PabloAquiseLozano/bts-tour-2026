@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { SectionContainer } from '../ui';
 
 interface TimelineEvent {
@@ -60,13 +61,13 @@ const timelineEvents: TimelineEvent[] = [
 ];
 
 const members = [
-  { name: 'RM', role: 'Líder & Rapero', color: 'from-blue-500 to-blue-700' },
-  { name: 'Jin', role: 'Vocalista', color: 'from-pink-400 to-pink-600' },
-  { name: 'SUGA', role: 'Rapero', color: 'from-gray-400 to-gray-600' },
-  { name: 'J-Hope', role: 'Rapero & Bailarín', color: 'from-red-500 to-red-700' },
-  { name: 'Jimin', role: 'Vocalista & Bailarín', color: 'from-yellow-400 to-yellow-600' },
-  { name: 'V', role: 'Vocalista', color: 'from-green-500 to-green-700' },
-  { name: 'Jung Kook', role: 'Vocalista & Maknae', color: 'from-purple-500 to-purple-700' },
+  { name: 'RM', role: 'Líder & Rapero', image: 'RM.png' },
+  { name: 'Jin', role: 'Vocalista', image: 'Jin.png' },
+  { name: 'SUGA', role: 'Rapero', image: 'Suga.png' },
+  { name: 'J-Hope', role: 'Rapero & Bailarín', image: 'j-hope.png' },
+  { name: 'Jimin', role: 'Vocalista & Bailarín', image: 'Jimin.png' },
+  { name: 'V', role: 'Vocalista', image: 'V.png' },
+  { name: 'Jung Kook', role: 'Vocalista & Maknae', image: 'Jungkook.png' },
 ];
 
 const BtsHistory: React.FC = () => {
@@ -78,17 +79,28 @@ const BtsHistory: React.FC = () => {
       dark
     >
       {/* Members showcase */}
-      <div className="mb-20">
-        <h3 className="text-2xl font-bold text-white text-center mb-8">Los 7 Miembros</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4">
+      <div className="mb-32">
+        <h3 className="text-2xl font-bold text-white text-center mb-12">Los 7 Miembros</h3>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-6 md:gap-8">
           {members.map((member) => (
             <div
               key={member.name}
-              className="group relative overflow-hidden rounded-xl cursor-pointer"
+              className="group flex flex-col items-center"
             >
-              <div className={`aspect-square bg-gradient-to-br ${member.color} p-4 flex flex-col items-center justify-center transition-all duration-300 group-hover:scale-105`}>
-                <span className="text-white font-bold text-lg md:text-xl">{member.name}</span>
-                <span className="text-white/70 text-xs md:text-sm text-center mt-1">{member.role}</span>
+              {/* Image container with grayscale and hover effects */}
+              <div className="relative w-full aspect-square mb-4 overflow-hidden rounded-xl">
+                <Image
+                  src={`/${member.image}`}
+                  alt={member.name}
+                  fill
+                  className="object-cover transition-all duration-500 ease-out group-hover:scale-110 group-hover:grayscale-0 grayscale"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 14vw"
+                />
+              </div>
+              {/* Text below image */}
+              <div className="text-center w-full">
+                <span className="text-white font-bold text-base md:text-lg block">{member.name}</span>
+                <span className="text-gray-400 text-xs md:text-sm text-center block mt-1">{member.role}</span>
               </div>
             </div>
           ))}

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "rm",
+    "name": "RM",
+    "image": "RM.png"
+  },
+  {
+    "id": "jin",
+    "name": "JIN",
+    "image": "Jin.png"
+  },
+  {
+    "id": "suga",
+    "name": "SUGA",
+    "image": "Suga.png"
+  },
+  {
+    "id": "jhope",
+    "name": "J-HOPE",
+    "image": "j-hope.png"
+  },
+  {
+    "id": "jimin",
+    "name": "JIMIN",
+    "image": "Jimin.png"
+  },
+  {
+    "id": "v",
+    "name": "V",
+    "image": "V.png"
+  },
+  {
+    "id": "jungkook",
+    "name": "JUNGKOOK",
+    "image": "Jungkook.png"
+  }
+]

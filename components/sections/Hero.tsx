@@ -1,6 +1,8 @@
 ﻿'use client';
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Button } from '../ui';
+import membersData from '@/data-list/members.json';
 interface TimeLeft {
   days: number;
   hours: number;
@@ -34,7 +36,7 @@ const Hero: React.FC = () => {
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
       </div>
-      <div className="container mx-auto px-4 relative z-10 text-center">
+      <div className="container mx-auto px-4 relative z-10 text-center py-24 flex flex-col items-center justify-center min-h-screen">
         <div className="mb-8">
           <h1 className="text-6xl md:text-8xl font-black text-white tracking-tight mb-4">BTS</h1>
           <div className="flex items-center justify-center gap-4 mb-2">
@@ -76,12 +78,26 @@ const Hero: React.FC = () => {
           </Button>
         </div>
         <div className="mt-16">
-          <p className="text-gray-500 text-sm mb-4">Los 7 miembros</p>
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-            {['RM', 'JIN', 'SUGA', 'J-HOPE', 'JIMIN', 'V', 'JUNGKOOK'].map((member) => (
-              <span key={member} className="text-white/70 hover:text-primary transition-colors font-medium text-lg cursor-default">
-                {member}
-              </span>
+          <p className="text-gray-500 text-sm mb-6">Los 7 miembros</p>
+          <div className="flex flex-wrap justify-center gap-2 md:gap-1 md:-space-x-8 lg:-space-x-12">
+            {membersData.map((member) => (
+              <div
+                key={member.id}
+                className="group cursor-pointer flex flex-col items-center"
+              >
+                <div className="relative w-24 h-32 md:w-32 md:h-40 lg:w-36 lg:h-48 overflow-hidden transition-transform duration-500 ease-out group-hover:scale-110 group-hover:z-10 mb-3">
+                  <Image
+                    src={`/${member.image}`}
+                    alt={member.name}
+                    width={200}
+                    height={500}
+                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-out"
+                  />
+                </div>
+                <span className="text-white/70 group-hover:text-primary transition-colors font-medium text-sm md:text-base">
+                  {member.name}
+                </span>
+              </div>
             ))}
           </div>
         </div>
